@@ -9,3 +9,4 @@ alias egrep='egrep --color=auto'
 # ls aliases
 alias la="ls -A"
 alias ll="ls -alF"
+
