@@ -1,0 +1,8 @@
+# to be placed at ~/.ssh/config
+
+# allow additional conections to remote machines
+# without putting in password every time
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/connections/%h_%p_%r
+
