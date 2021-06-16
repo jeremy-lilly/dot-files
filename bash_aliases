@@ -9,11 +9,3 @@ alias egrep='egrep --color=auto'
 # ls aliases
 alias la="ls -A"
 alias ll="ls -alF"
-
-# ssh aliases
-alias sshcori="ssh -Y jlilly@cori.nersc.gov"
-alias sshgr="ssh -Y -t jlilly@wtrw.lanl.gov ssh gr-fe"
-
-# Variables useful for scp
-export CORI="jlilly@cori.nersc.gov"
-
