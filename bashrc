@@ -1,4 +1,4 @@
-# to be placed at ~/.bashrc
+# to be placed in ~/
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -101,6 +101,11 @@ unset color_prompt force_color_prompt
 # alias definitions
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# aliases for ssh
+if [ -f ~/.ssh_aliases ]; then
+    . ~/.ssh_aliases
 fi
 
 # aliases for zoom/webex meeting rooms
