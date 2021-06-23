@@ -52,6 +52,7 @@ set tabstop=4
 nmap ; :
 
 " Add marker at column 80 and solid color after 120
-let &colorcolumn="80,".join(range(120,999),",")
 highlight ColorColumn guibg=darkgrey ctermbg=darkgrey
+command Lines let &colorcolumn="80,".join(range(120,999),",")
+command LinesOff set cc=
 
