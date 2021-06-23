@@ -1,4 +1,4 @@
-" to be placed in ~/
+" to be placed at ~/.vimrc
 
 " download/install VimPlug if not already
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -50,4 +50,8 @@ set tabstop=4
 
 " Maps
 nmap ; :
+
+" Add marker at column 80 and solid color after 120
+let &colorcolumn="80,".join(range(120,999),",")
+highlight ColorColumn guibg=darkgrey ctermbg=darkgrey
 
