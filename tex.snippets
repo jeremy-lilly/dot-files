@@ -1,0 +1,70 @@
+# to be placed at ~/.vim/UltiSnips/tex.snippets
+
+snippet mm "Math mode"
+\( $1 \)
+endsnippet
+
+
+snippet dm "Display math mode" b
+\[ $1 \]
+endsnippet
+
+
+snippet env "Begin/end environment" b
+\begin{$1}
+	$2
+\end{$1}
+endsnippet
+
+
+snippet ( "\left(\right)"
+\left( $1 \right)
+endsnippet
+
+
+snippet [ "\left[\right]"
+\left[ $1 \right]
+endsnippet
+
+
+snippet head "Default header" b
+%! TeX program = lualatex
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%|                                               |%
+%| Jeremy Lilly                                  |%
+%| Graduate Student, Department of Mathematics   |%
+%| Oregon State University                       |%
+%| ONID e-mail: lillyj@oregonstate.edu           |%
+%|                                               |%
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+
+\documentclass{/home/jlilly/sync/texTemplates/headers/homework}
+
+%\usepackage{/home/jlilly/sync/texTemplates/headers/luamatlab}
+
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+%|                                               |%
+%|                                               |%
+%|                                               |%
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+
+\begin{document}
+	Jeremy Lilly \\\\
+	MTH $1 \\\\
+	DATE $2
+
+	\begin{center}
+		Homework $3
+	\end{center}
+
+	\bigskip
+
+	$4
+\end{document}
+
+endsnippet
+
