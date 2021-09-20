@@ -1,5 +1,6 @@
 " to be placed at ~/.vimrc
 
+
 " download/install VimPlug if not already
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -7,52 +8,124 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 " load plugins
 call plug#begin('~/.vim/plugged')
     
     Plug 'rakr/vim-one'
     Plug 'itchyny/lightline.vim'
+    Plug 'lervag/vimtex'
+    Plug 'preservim/nerdtree'
+    Plug 'SirVer/ultisnips'
+    Plug 'ackyshake/VimCompletesMe'
+    Plug 'Valloric/YouCompleteMe'
+    "Plug 'dense-analysis/ale'
 
 call plug#end()
 
-" Colors
-colo one
-set background=dark
 
-" Lightline
-set laststatus=2
-set noshowmode
-let g:lightline = {'colorscheme': 'one'}
+" turn on filetype detection
+filetype plugin indent on
 
-" Allow mouse
+
+" syntax highlighting
+syntax on
+
+
+" encoding
+set encoding=utf-8
+
+
+" allow mouse
 set mouse=a
+
 
 " Show line numbers
 set number
 
+
 " Turn off beeping
 set visualbell
 
-" Encoding
-set encoding=utf-8
 
-" Syntax highlighting
-syntax on
-
-" Detect spaces vs tab
-filetype plugin indent on
-
-" Whitespace
+" whitespace
 set wrap
 set sw=4
 set expandtab
 set tabstop=4
 
-" Maps
+
+" maps
 nmap ; :
 
-" Add marker at column 80 and 120
-highlight ColorColumn guibg=darkgrey ctermbg=darkgrey
-command Lines set cc=80,120
-command LinesOff set cc=
+
+" colors
+colorscheme one
+set background=dark
+let g:one_allow_italics=1
+" popup menu
+highlight Pmenu ctermfg=white
+highlight PmenuSel ctermfg=white
+" spellcheck
+highlight clear SpellBad
+highlight SpellBad cterm=underline ctermfg=red
+set spell spelllang=en_us
+" add marker at column 80 and 120
+highlight ColorColumn guibg=darkgray ctermbg=darkgray
+command Rule set cc=80,120
+command RuleOff set cc=
+
+
+" lightline
+set laststatus=2
+set noshowmode
+let g:lightline={'colorscheme': 'one'}
+
+
+" vimtex config
+let g:vimtex_quickfix_open_on_warning=0
+let g:vimtex_view_method = 'zathura'
+" add closing brace on completion
+let g:vimtex_complete_close_braces=1
+" start client server so we can use
+" backward search synctex
+"if empty(v:servername) && exists('*remote_startserver')
+"    call remote_startserver('VIM')
+"endif
+
+
+" nerdtree config
+nnoremap <leader>nn :NERDTreeToggle<CR>
+" start NERDTree when vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+
+" ultisnips
+" change trigger from <tab>, which is used by YCM
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+" split edit window horizontally 
+let g:UltiSnipsEditSplit='horizontal'
+
+
+" vimcompletesme
+augroup VimCompletesMeTex
+    autocmd!
+    autocmd FileType tex
+        \ let b:vcm_omni_pattern = g:vimtex#re#youcompleteme
+augroup END
+
+
+" youcompleteme
+" on first install, need to compile with
+"   cd ~/.vim/plugged/YouCompleteMe
+"   python3 install.py --all
+" allow completion with vimtex
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+
 
