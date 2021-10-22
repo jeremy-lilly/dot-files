@@ -10,7 +10,7 @@ snippet dm "Display math mode" b
 endsnippet
 
 
-snippet env "Begin/end environment" b
+snippet be "Begin/end environment" 
 \begin{$1}
 	$2
 \end{$1}
@@ -53,18 +53,27 @@ snippet head "Default header" b
 
 
 \begin{document}
-	Jeremy Lilly \\\\
-	MTH $1 \\\\
-	DATE $2
 
-	\begin{center}
-		Homework $3
-	\end{center}
 
-	\bigskip
+Jeremy Lilly \\\\
+MTH $1 \\\\
+$2
 
-	$4
+\begin{center}
+	Homework $3
+\end{center}
+
+\bigskip
+
+$4
+
+
 \end{document}
 
+endsnippet
+
+
+snippet frac "\frac{}{}"
+\frac{#1}{#2}
 endsnippet
 
