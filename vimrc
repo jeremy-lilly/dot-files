@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'SirVer/ultisnips'
     Plug 'ackyshake/VimCompletesMe'
     Plug 'Valloric/YouCompleteMe'
+    Plug 'ervandew/supertab'
     "Plug 'dense-analysis/ale'
 
 call plug#end()
@@ -64,29 +65,36 @@ colorscheme one
 set background=dark
 let g:one_allow_italics=1
 " popup menu
-highlight Pmenu ctermfg=white
-highlight PmenuSel ctermfg=white
+call one#highlight('Pmenu', 'ffffff', '242424', 'none')
+call one#highlight('PmenuSel', 'dfdfdf', '333333', 'none')
 " spellcheck
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 set spell spelllang=en_us
 " add marker at column 80 and 120
-highlight ColorColumn guibg=darkgray ctermbg=darkgray
+highlight ColorColumn ctermbg=darkgray
 command Rule set cc=80,120
 command RuleOff set cc=
 
 
-" lightline
+""" lightline
 set laststatus=2
 set noshowmode
 let g:lightline={'colorscheme': 'one'}
 
 
-" vimtex config
+""" vimtex config
 let g:vimtex_quickfix_open_on_warning=0
 let g:vimtex_view_method = 'zathura'
-" add closing brace on completion
-let g:vimtex_complete_close_braces=1
+" add/remove closing brace on completion
+let g:vimtex_complete_close_braces=0
+" close quickfix window after keystrokes
+let g:vimtex_quickfix_autoclose_after_keystrokes=1
+" fix \item indentation conflict with YCM
+autocmd FileType tex,plaintex execute "setlocal indentkeys=" . &indentkeys
+" run VimtexClean on exit
+autocmd VimLeave *.tex :VimtexClean
+
 " start client server so we can use
 " backward search synctex
 "if empty(v:servername) && exists('*remote_startserver')
@@ -94,14 +102,14 @@ let g:vimtex_complete_close_braces=1
 "endif
 
 
-" nerdtree config
+""" nerdtree config
 nnoremap <leader>nn :NERDTreeToggle<CR>
 " start NERDTree when vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 
-" ultisnips
+""" ultisnips
 " change trigger from <tab>, which is used by YCM
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -110,7 +118,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 let g:UltiSnipsEditSplit='horizontal'
 
 
-" vimcompletesme
+""" vimcompletesme
 augroup VimCompletesMeTex
     autocmd!
     autocmd FileType tex
@@ -118,7 +126,7 @@ augroup VimCompletesMeTex
 augroup END
 
 
-" youcompleteme
+""" youcompleteme
 " on first install, need to compile with
 "   cd ~/.vim/plugged/YouCompleteMe
 "   python3 install.py --all
@@ -128,4 +136,14 @@ if !exists('g:ycm_semantic_triggers')
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
