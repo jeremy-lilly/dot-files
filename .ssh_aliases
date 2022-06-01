@@ -1,0 +1,13 @@
+# to be placed at ~/.ssh_aliases
+
+# ssh aliases
+alias sshcori="ssh -Y jlilly@cori.nersc.gov"
+alias sshgr="ssh -Y -t jlilly@wtrw.lanl.gov ssh gr-fe"
+alias sshba="ssh -Y -t jlilly@wtrw.lanl.gov ssh ba-fe"
+alias sshar="ssh -Y -t jlilly@wtrw.lanl.gov ssh ar-tn"
+alias sshko="ssh -Y -t jlilly@wtrw.lanl.gov ssh ko-fe"
+
+# Variables useful for scp
+export CORI="jlilly@cori.nersc.gov"
+export TARGR="jlilly@wtrw.lanl.gov:gr-fe.lanl.gov:/lustre/scratch4/turquoise/jlilly/tarsLanding"
+
