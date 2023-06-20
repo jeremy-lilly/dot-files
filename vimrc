@@ -90,8 +90,6 @@ let g:vimtex_view_method = 'zathura'
 let g:vimtex_complete_close_braces=0
 " close quickfix window after keystrokes
 let g:vimtex_quickfix_autoclose_after_keystrokes=1
-" fix \item indentation conflict with YCM
-autocmd FileType tex,plaintex execute "setlocal indentkeys=" . &indentkeys
 " run VimtexClean on exit
 autocmd VimLeave *.tex :VimtexClean
 
