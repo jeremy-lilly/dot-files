@@ -50,7 +50,7 @@ set number
 
 
 " Turn off beeping
-set visualbell
+set belloff=all
 
 
 " whitespace
