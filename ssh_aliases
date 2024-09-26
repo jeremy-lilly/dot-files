@@ -1,9 +1,5 @@
 # to be placed at ~/.ssh_aliases
 
-# ssh aliases
-alias sshpm="ssh -Y jlilly@perlmutter.nersc.gov"
-alias sshar="ssh -Y -t jlilly@wtrw.lanl.gov ssh ar-tn"
-
 # Variables useful for scp
 export PM="jlilly@perlmutter.nersc.gov"
 export TARPM="jlilly@perlmutter.nersc.gov:/pscratch/sd/j/jlilly/tarsLanding"

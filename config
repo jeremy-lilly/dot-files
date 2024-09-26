@@ -1,8 +1,20 @@
 # to be placed at ~/.ssh/config
 
-# allow additional conections to remote machines
+# allow additional connections to remote machines
 # without putting in password every time
 Host *
-  ControlMaster auto
-  ControlPath ~/.ssh/connections/%h_%p_%r
+    ControlMaster auto
+    ControlPath ~/.ssh/connections/%h_%p_%r
+
+Host pm
+    Hostname perlmutter.nersc.gov
+    User jlilly
+
+Host ro
+    Hostname ro-rfe.lanl.gov
+    User jlilly
+
+Host da
+    Hostname darwin-fe.lanl.gov
+    User jlilly
 
