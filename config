@@ -13,6 +13,8 @@ Host pm
 Host ro
     Hostname ro-rfe.lanl.gov
     User jlilly
+    RequestTTY yes
+    RemoteCommand tmux new-session -A -s ro-session
 
 Host da
     Hostname darwin-fe.lanl.gov
