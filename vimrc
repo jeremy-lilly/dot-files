@@ -62,7 +62,9 @@ set tabstop=4
 
 " maps
 nmap ; :
-
+"inoremap <C-v> <ESC>"+pa
+vnoremap <C-c> "+y 
+"vnoremap <C-d> "+d
 
 " colors
 colorscheme one
