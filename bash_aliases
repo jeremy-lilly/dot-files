@@ -14,3 +14,6 @@ alias ll='ls -alF'
 alias c='pwd > ~/.misc/pwd.txt'
 alias d='cd $(cat ~/.misc/pwd.txt)'
 
+# grep on bash history
+alias hgrep='history | grep '
+
