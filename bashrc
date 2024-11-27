@@ -111,6 +111,9 @@ case "$TERM" in xterm*|rxvt*)
     ;;
 esac
 
+# set editor to vi
+export EDITOR=vi
+
 # alias definitions
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
