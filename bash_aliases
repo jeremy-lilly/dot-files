@@ -8,7 +8,7 @@ alias egrep='egrep --color=auto'
 
 # ls aliases
 alias la='ls -A'
-alias ll='ls -alF'
+alias ll='ls -alhF'
 
 # easy cd between tabs
 alias c='pwd > ~/.misc/pwd.txt'
